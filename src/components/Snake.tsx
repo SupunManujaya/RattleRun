@@ -1,12 +1,32 @@
 import { Fragment } from "react";
-import { coordinate } from "../types/types";
+import { View, StyleSheet } from "react-native";
+import { Coordinate } from "../types/types";
+import { Colors } from "../styles/colors";
 
-interface Snakeprops {
-    sanake:coordinate [];
+interface SnakeProps {
+  snake: Coordinate[];
 }
 
-export default function snake ({snake}:snakeprops):JSX.Element {
+export default function snake({ snake }: SnakeProps): JSX.Element {
   return (
-    <Fragment></Fragment>
+    <Fragment>
+      {snake.map((segment: Coordinate, index: number) => {
+        const segmentsyle = {
+          left: segment.x * 10,
+          top: segment.y * 10,
+        };
+        return <View key={index} style={[style.snake, segmentsyle]} />
+      })}
+    </Fragment>
   )
 }
+
+const style = StyleSheet.create({
+  snake: {
+    width: 15,
+    higth: 15,
+    borderRadius: 7,
+    backgroundcolor: Colors.primary,
+    position: 'absolute'
+  }
+})

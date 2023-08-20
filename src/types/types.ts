@@ -1,8 +1,8 @@
 export interface GestureEventType {
   nativeEvent: { translationX: number; translationY: number };
-}   
+}
 
-export interface coordinate {
+export interface Coordinate {
   x: number;
   y: number;
 }
